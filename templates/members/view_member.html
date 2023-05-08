@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Members
+{% endblock %}
+
+{% block content %}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+  <div class="card">
+    <h5 class="card-header">Danh sách thành viên</h5>
+    <form method="POST" action="{% url 'search_member' %}">
+      {% csrf_token %}
+      <div class=" mb-4 d-flex">
+        <div class="col"></div>
+        <div class="col">
+          <label for="search">{{ search_form.search.label }}</label>
+          {{ search_form.search}}
+        </div>
+        <div class="{% if not result %} col {% endif %}">
+          <button type="submit" id="submit" class="btn btn-primary" style="margin-right: 30px;">Search</button>
+        </div>
+        {% if result %}
+          <div class="col">
+            <button type="submit" id="clear" name="clear" class="btn btn-dark">Clear</button>
+          </div>
+        {% endif %}
+      </div>      
+  </form>
+    <div class="table-responsive text-nowrap">
+      {% if result %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Tên</th>
+              <th>Ngày sinh</th>
+              <!-- <th>Photo</th> -->
+              <th>Ngày đăng kí</th>
+              <th>Hạn đăng kí</th>
+              <th>Gói đăng kí</th>
+              <th>Thời gian đăng kí</th>
+              <th>Fees</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="table-border-bottom-0">
+            {% for member in result %}
+              <tr>
+                <!-- <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td> -->
+                <td>{{ member.first_name }} {{ member.last_name }}</td>
+                <td>{{ member.dob }}</td>
+                <td>{{ member.registration_date }}</td>
+                <td>{{ member.registration_upto }}</td>
+                <td>{{ member.get_subscription_type_display }}</td>
+                <td>{{ member.subscription_period }} Months</td>
+                <td>
+                  {% if member.fee_status == 'paid' %}
+                    <span class="badge bg-label-success me-1">Paid</span>
+                  {% else %}
+                    <span class="badge bg-label-danger me-1">Pending</span>
+                  {% endif %}
+                </td>
+                <td>
+                  <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                      <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="javascript:void(0);"
+                        ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                      >
+                      <a class="dropdown-item" href="javascript:void(0);"
+                        ><i class="bx bx-trash me-1"></i> Delete</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Tên</th>
+              <th>Ngày sinh</th>
+              <!-- <th>Photo</th> -->
+              <th>Ngày đăng kí</th>
+              <th>Hạn đăng kí</th>
+              <th>Gói đăng kí</th>
+              <th>Thời gian đăng kí</th>
+              <th>Fees</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="table-border-bottom-0">
+            {% for member in all %}
+              <tr>
+                <!-- <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td> -->
+                <td>{{ member.first_name }} {{ member.last_name }}</td>
+                <td>{{ member.dob }}</td>
+                <td>{{ member.registration_date }}</td>
+                <td>{{ member.registration_upto }}</td>
+                <td>{{ member.get_subscription_type_display }}</td>
+                <td>{{ member.subscription_period }} Months</td>
+                <td>
+                  {% if member.fee_status == 'paid' %}
+                    <span class="badge bg-label-success me-1">Paid</span>
+                  {% else %}
+                    <span class="badge bg-label-danger me-1">Pending</span>
+                  {% endif %}
+                </td>
+                <td>
+                  <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                      <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="javascript:void(0);"
+                        ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                      >
+                      <a class="dropdown-item" href="javascript:void(0);"
+                        ><i class="bx bx-trash me-1"></i> Delete</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
