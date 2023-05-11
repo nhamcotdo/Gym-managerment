@@ -40,7 +40,7 @@ class Member(models.Model):
     first_name = models.CharField(('Tên'), max_length=50)
     last_name = models.CharField(('Họ'), max_length=50)
     mobile_number = models.CharField(
-        ('Mobile Number'), max_length=10, unique=True)
+        ('Số điện thoại'), max_length=10, unique=True)
     email = models.EmailField(null=True, blank=True)
     address = models.CharField(('Địa chỉ'),max_length=300, blank=True)
     admitted_on = models.DateField(auto_now_add=True)
@@ -54,6 +54,7 @@ class Member(models.Model):
         choices=SUBSCRIPTION_TYPE_CHOICES,
         default=SUBSCRIPTION_TYPE_CHOICES[0][0]
     )
+    medical_history = models.CharField(('Tiền sử bệnh'), max_length=300, blank=True, default='')
     subscription_period = models.CharField(
         ('Thời gian đăng kí'),
         max_length=30,
@@ -90,8 +91,8 @@ class AddMemberForm(ModelForm):
         # specify the different type of input such as a date picker, text area, or file upload field. fields
         widgets = {
         'registration_date': forms.DateInput(attrs={'class': 'datepicker form-control', 'type': 'date'}),
-        'address': forms.Textarea(attrs={'cols': 80, 'rows': 3}),
-        'medical_history': forms.Textarea(attrs={'cols': 80, 'rows': 3}),
+        #'address': forms.Textarea(attrs={'cols': 80, 'rows': 1}),
+        #'medical_history': forms.Textarea(attrs={'cols': 80, 'rows': 1}),
         'dob': forms.DateInput(attrs={'class': 'datepicker form-control', 'type': 'date'}),
         'photo': forms.FileInput(attrs={'accept': 'image/*;capture=camera'})
         }
