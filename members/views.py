@@ -2,6 +2,29 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
 from .models import AddMemberForm, Member, SearchForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from payments.models import Payments
+from django.db.models.signals import post_save
+import dateutil.parser as parser
+from notifications.config import my_handler
+import datetime, csv
+import dateutil.relativedelta as delta
+
+
+
+# Export user information.
+def export_all(user_obj):
+    response = HttpResponse(content_type='text/csv')
+    writer = csv.writer(response)
+    writer.writerow(['First name', 'Last name', 'Mobile', 'Admission Date', 'Subscription Type', 'Batch'])
+    members = user_obj.values_list('first_name', 'last_name', 'mobile_number', 'admitted_on', 'subscription_type', 'batch')
+    for user in members:
+        first_name = user[0]
+        last_name = user[1]
+        writer.writerow(user)
+
+    response['Content-Disposition'] = 'attachment; filename="' + first_name + ' ' + last_name + '.csv"'
+    return response
+
 
 def members(request):
     form = AddMemberForm()
@@ -10,6 +33,16 @@ def members(request):
         #'subs_end_today_count': get_notification_count(),
     }
     return render(request, 'members/add_member.html', context)
+
+
+def model_save(model):
+    post_save.disconnect(my_handler, sender=Member)
+    model.save()
+    post_save.connect(my_handler, sender=Member)
+
+def check_status(request, object):
+    object.stop = 1 if request.POST.get('stop') == '1' else 0
+    return object
 
 def view_member(request):
     view_all = Member.objects.filter(stop=0).order_by('first_name')
@@ -59,3 +92,47 @@ def search_member(request):
     else:
         search_form = SearchForm()
     return render(request, 'members/view_member.html', {'search_form': search_form})
+
+def add_member(request):
+    view_all = Member.objects.all()
+    success = 0
+    member = None
+    if request.method == 'POST':
+        form = AddMemberForm(request.POST, request.FILES)
+        if form.is_valid():
+            temp = form.save(commit=False)
+            temp.first_name = request.POST.get('first_name').capitalize()
+            temp.last_name = request.POST.get('last_name').capitalize()
+            temp.registration_upto = parser.parse(request.POST.get('registration_date')) + delta.relativedelta(months=int(request.POST.get('subscription_period')))
+            if request.POST.get('fee_status') == 'pending':
+                temp.notification = 1
+
+            model_save(temp)
+            success = 'Successfully Added Member'
+
+            # Add payments if payment is 'paid'
+            if temp.fee_status == 'paid':
+                payments = Payments(
+                                    user=temp,
+                                    payment_date=temp.registration_date,
+                                    payment_period=temp.subscription_period,
+                                    payment_amount=temp.amount)
+                payments.save()
+
+            form = AddMemberForm()
+            member = Member.objects.last()
+
+        context = {
+            'add_success': success,
+            'form': form,
+            'member': member,
+            #'subs_end_today_count': get_notification_count(),
+        }
+        return render(request, 'members/add_member.html', context)
+    else:
+        form = AddMemberForm()
+        context = {
+            'form': form,
+            #'subs_end_today_count': get_notification_count(),
+        }
+    return render(request, 'members/add_member.html', context)
