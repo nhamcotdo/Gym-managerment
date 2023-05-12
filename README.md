@@ -17,10 +17,15 @@
 <img width="1280" alt="Screenshot 2023-05-12 at 00 51 56" src="https://github.com/nhamcotdo/Gym-managerment/assets/92006635/33c69e5c-39aa-4ad4-8ae1-1b15c0bd43d9">
 
 ## Chỉnh sửa thông tin 
+
 <img width="1432" alt="Screen Shot 2023-05-13 at 01 45 11" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/f692711c-fa54-41c1-bba1-a252300eb4f5">
-### Thông báo khi update thành công
+
+## Thông báo khi update thành công
+
 <img width="344" alt="Screen Shot 2023-05-13 at 01 46 41" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/c502a4ce-5bed-4503-a3fe-69d5514d593b">
-#### Thông báo khi có lỗi 
+
+## Thông báo khi có lỗi 
+
 <img width="1440" alt="Screen Shot 2023-05-13 at 01 48 07" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/07af60b7-d130-4d70-bbca-f81b74fc22cd">
 
 
