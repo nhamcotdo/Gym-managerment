@@ -327,3 +327,8 @@ def update_member(request, id):
                             'user': user,
                         }
                     )
+    
+def delete_member(request, id):
+    print(id)
+    Member.objects.filter(pk=id).delete()
+    return redirect('view_member')
