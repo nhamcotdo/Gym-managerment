@@ -10,4 +10,5 @@ urlpatterns = [
     path('view/', login_required(views.view_member), name='view_member'),
     path('search/', (views.search_member), name='search_member'),
     path('update/<int:id>/', login_required(views.update_member), name='update_member'),
+    path('delete/<int:id>/', login_required(views.delete_member), name='delete_member'),
 ]
