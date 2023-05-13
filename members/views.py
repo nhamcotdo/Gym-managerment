@@ -105,7 +105,7 @@ def add_member(request):
             if temp.fee_status == 'paid':
                 payments = Payments(
                                     user=temp,
-                                    payment_date=temp.registration_date,
+                                    payment_date=datetime.date.today(),
                                     payment_period=temp.subscription_period,
                                     payment_amount=temp.amount)
                 payments.save()
