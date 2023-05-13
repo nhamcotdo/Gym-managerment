@@ -10,6 +10,19 @@ import datetime, csv
 import dateutil.relativedelta as delta
 from django.contrib import messages
 
+# Export user information.
+def export_all(user_obj):
+    response = HttpResponse(content_type='text/csv')
+    writer = csv.writer(response)
+    writer.writerow(['First name', 'Last name', 'Mobile', 'Admission Date', 'Subscription Type'])
+    members = user_obj.values_list('first_name', 'last_name', 'mobile_number', 'admitted_on', 'subscription_type')
+    for user in members:
+        first_name = user[0]
+        last_name = user[1]
+        writer.writerow(user)
+
+    response['Content-Disposition'] = 'attachment; filename="' + first_name + ' ' + last_name + '.csv"'
+    return response
 
 def members(request):
     form = AddMemberForm()
@@ -129,6 +142,10 @@ def add_member(request):
     return render(request, 'members/add_member.html', context)
 
 def update_member(request, id):
+    if request.method == 'POST' and request.POST.get('export'):
+        return export_all(Member.objects.filter(pk=id))
+    if request.method == 'POST' and request.POST.get('no'):
+        return redirect('/')
     #return render(request, 'members/update_member.html')
     if request.method == 'POST' and request.POST.get('gym_membership'):
             gym_form = UpdateMemberGymForm(request.POST)

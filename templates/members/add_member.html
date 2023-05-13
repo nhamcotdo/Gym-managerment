@@ -22,12 +22,12 @@
             <div class="container text-center">
               <div class="alert alert-dark" style="margin-bottom: 0">
                 <p style="margin-bottom: 0">{{ add_success }}</p>
-                {% comment %} <form method="POST" action="{% url 'update_member' member.member_id %}">
+                <form method="POST" action="{% url 'update_member' member.member_id %}">
                   {% csrf_token %}
                   <div>Want to print user data?</div>
                   <input type="submit" class="btn btn-success btn-sm" name="export" value="Yes" />
                   <input type="submit" class="btn btn-danger btn-sm" name="no" value="No" />
-                </form> {% endcomment %}
+                </form>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
               <div class="d-flex align-items-start align-items-sm-center gap-4 " margin-right: 80px;>
                 <img src="https://tse3.mm.bing.net/th?id=OIP.UCpzvrP5JjygdkV9UlCHxgAAAA&pid=Api&P=0" height="110" width="110" class="img-fluid">
                 <div class="form-group d-flex justify-content-center" style="padding-top: 10px;">
-                  <h2 class="my-0 mx-3">Đăng kí thành viên</h2>
+                  <h2 class="my-0 mx-3 ">Đăng kí thành viên</h2>
                 </div>
             </div>
           <hr class="my-0" />
@@ -140,7 +140,7 @@
             </div>
 
             <div class = "row">
-              <button type="submit" class="btn btn-dark btn-block">Add</button>
+              <button type="submit" style="margin-top: 15px" class="btn btn-primary btn-block">Add</button>
             </div>
         </div>
       </hr>
