@@ -129,7 +129,6 @@ class AddMemberForm(ModelForm):
         if queryset > 0:
             raise forms.ValidationError('This member already exists!')
 
-
 class SearchForm(forms.Form):
     search = forms.CharField(label='Tìm kiếm', max_length=100, required=False)
 
@@ -138,3 +137,24 @@ class SearchForm(forms.Form):
         if search == '':
             raise forms.ValidationError('Please enter a name in search box')
         return search
+
+class UpdateMemberGymForm(forms.Form):
+    registration_date   = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker form-control', 'type': 'date'}),)
+    registration_upto = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker form-control', 'type': 'date'}),)
+    subscription_type  = forms.ChoiceField(choices=SUBSCRIPTION_TYPE_CHOICES)
+    subscription_period = forms.ChoiceField(choices=SUBSCRIPTION_PERIOD_CHOICES)
+    fee_status = forms.ChoiceField(choices=FEE_STATUS)
+    amount = forms.CharField()
+    stop = forms.ChoiceField(label='Status', choices=STATUS)
+
+    def clean_amount(self):
+        amount = self.cleaned_data.get('amount')
+        if not amount.isdigit():
+            raise forms.ValidationError('Amount should be a number')
+        return amount
+
+class UpdateMemberInfoForm(forms.Form):
+    first_name     = forms.CharField(max_length=50)
+    last_name      = forms.CharField(max_length=50)
+    photo          = forms.FileField(label='Update Photo', required=False)
+    dob            = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker form-control', 'type': 'date'}),)
