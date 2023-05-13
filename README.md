@@ -28,6 +28,20 @@
 
 <img width="1440" alt="Screen Shot 2023-05-13 at 01 48 07" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/07af60b7-d130-4d70-bbca-f81b74fc22cd">
 
+## Lịch sử thanh toán
+
+<img width="1427" alt="Screen Shot 2023-05-13 at 14 21 50" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/4ab4ecdf-79f7-4e49-b227-b83db6f25757">
+
+<img width="1426" alt="Screen Shot 2023-05-13 at 14 22 18" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/e92dbc69-fa81-4f98-b102-73524dda35cd">
+
+## Create tab to see stop and active member
+
+<img width="1427" alt="Screen Shot 2023-05-13 at 14 23 59" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/ff7dd0e5-d942-4b06-b881-a6c7beb9ade4">
+
+<img width="1422" alt="Screen Shot 2023-05-13 at 14 24 19" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/e053e2f7-3482-4470-a075-c90988b04dd0">
+
+
+
 
 
 
