@@ -40,8 +40,5 @@
 
 <img width="1422" alt="Screen Shot 2023-05-13 at 14 24 19" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/e053e2f7-3482-4470-a075-c90988b04dd0">
 
-
-
-
-
-
+## Dashboard
+![image](https://github.com/nhamcotdo/Gym-managerment/assets/87189902/d01d40fc-85aa-438e-865f-e7ffe7ad18d3)
