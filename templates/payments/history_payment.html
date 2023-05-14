@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% block title %}
+    Members
+{% endblock %}
+
+{% block content %}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Thông tin thành viên /</span> Lịch sử thanh toán</h4>
+  <div class="card">
+    <h5 class="card-header">Lịch sử thanh toán</h5>
+    <div class="table-responsive text-nowrap">
+        {% if payments != 'No Records' %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Ngày thanh toán</th>
+              <th>Thanh toán cho</th>
+              <th>Số tiền</th>
+            </tr>
+          </thead>
+          <tbody class="table-border-bottom-0">
+            {% for payment in payments %}
+              <tr>
+                <td>{{ payment.payment_date }}</td>
+                <td>{{ payment.payment_period }} tháng</td>
+                <td>{{ payment.payment_amount }} VND</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <button class="btn btn-dark float-right" onclick="goBack()">Back</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script>
+  function goBack() {
+      window.history.back();
+  }
+
+  $(window).on('load', function(){
+    $('#modal').modal('show');
+  });
+</script>
+{% endblock %}

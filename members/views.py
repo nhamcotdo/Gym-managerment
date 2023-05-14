@@ -31,17 +31,23 @@ def check_status(request, object):
 
 def view_member(request):
     view_all = Member.objects.filter(stop=0).order_by('first_name')
+    view_all1 = Member.objects.filter(stop=1).order_by('first_name')
     paginator = Paginator(view_all, 100)
+    paginator1 = Paginator(view_all1, 100)
     try:
         page = request.GET.get('page', 1)
         view_all = paginator.page(page)
+        view_all1 = paginator1.page(page)
     except PageNotAnInteger:
         view_all = paginator.page(1)
+        view_all1 = paginator1.page(1)
     except EmptyPage:
         view_all = paginator.page(paginator.num_pages)
+        view_all1 = paginator1.page(paginator1.num_pages)
     search_form = SearchForm()
     context = {
         'all': view_all,
+        'all1': view_all1,
         'search_form': search_form,
         #'subs_end_today_count': get_notification_count(),
     }
@@ -332,3 +338,4 @@ def delete_member(request, id):
     print(id)
     Member.objects.filter(pk=id).delete()
     return redirect('view_member')
+
