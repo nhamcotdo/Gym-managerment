@@ -1,5 +1,5 @@
 # Gym-managerment
-# Login
+# Đăng nhập
 ![image](https://user-images.githubusercontent.com/87189902/236906240-a3887446-cc04-4744-aa30-cbf2f13658bd.png)
 # Đổi mật khẩu
 ![image](https://user-images.githubusercontent.com/87189902/236906369-cca3c918-2c24-4aca-acf3-9f4529317783.png)
@@ -14,7 +14,11 @@
 
 ## Thêm thành viên
 
-<img width="1280" alt="Screenshot 2023-05-12 at 00 51 56" src="https://github.com/nhamcotdo/Gym-managerment/assets/92006635/33c69e5c-39aa-4ad4-8ae1-1b15c0bd43d9">
+<img width="1280" alt="Screenshot 2023-05-15 at 20 52 47" src="https://github.com/nhamcotdo/Gym-managerment/assets/92006635/db165995-243b-4f2e-8112-191e81ffc53c">
+
+## Xuất file excel sau khi đăng kí thành viên
+
+<img width="1280" alt="Screenshot 2023-05-15 at 21 46 06" src="https://github.com/nhamcotdo/Gym-managerment/assets/92006635/14d5a2b9-ca54-4ac6-95eb-d7649963cecc">
 
 ## Chỉnh sửa thông tin 
 
@@ -34,16 +38,21 @@
 
 <img width="1426" alt="Screen Shot 2023-05-13 at 14 22 18" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/e92dbc69-fa81-4f98-b102-73524dda35cd">
 
-## Create tab to see stop and active member
+## Tạo tab để xem thành viên đã gia hạn và kích hoạt thành viên đã gia hạn
 
 <img width="1427" alt="Screen Shot 2023-05-13 at 14 23 59" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/ff7dd0e5-d942-4b06-b881-a6c7beb9ade4">
 
 <img width="1422" alt="Screen Shot 2023-05-13 at 14 24 19" src="https://github.com/nhamcotdo/Gym-managerment/assets/109887929/e053e2f7-3482-4470-a075-c90988b04dd0">
 
+## Thống kê thành viên theo tháng năm và xuất file excel
+
+<img width="1280" alt="Screenshot 2023-05-15 at 21 01 27" src="https://github.com/nhamcotdo/Gym-managerment/assets/92006635/c98dd398-a7ea-4483-9f0c-d621d3440e1d">
+
 ## Dashboard
 ![image](https://github.com/nhamcotdo/Gym-managerment/assets/87189902/d01d40fc-85aa-438e-865f-e7ffe7ad18d3)
 
-## Notification
+## Thông báo
 ![image](https://github.com/nhamcotdo/Gym-managerment/assets/87189902/bdcfacbd-ed46-4fde-b7f5-f6b1cce95143)
+
 ## Menu
 ![image](https://github.com/nhamcotdo/Gym-managerment/assets/87189902/bf25028b-9044-41d4-bdfc-1df604d44cd6)
