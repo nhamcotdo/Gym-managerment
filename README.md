@@ -42,3 +42,8 @@
 
 ## Dashboard
 ![image](https://github.com/nhamcotdo/Gym-managerment/assets/87189902/d01d40fc-85aa-438e-865f-e7ffe7ad18d3)
+
+## Notification
+![image](https://github.com/nhamcotdo/Gym-managerment/assets/87189902/bdcfacbd-ed46-4fde-b7f5-f6b1cce95143)
+## Menu
+![image](https://github.com/nhamcotdo/Gym-managerment/assets/87189902/bf25028b-9044-41d4-bdfc-1df604d44cd6)

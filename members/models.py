@@ -43,7 +43,6 @@ class Member(models.Model):
         ('Số điện thoại'), max_length=10, unique=True)
     email = models.EmailField(null=True, blank=True)
     address = models.CharField(('Địa chỉ'),max_length=300, blank=True)
-    admitted_on = models.DateField(auto_now_add=True)
     registration_date = models.DateField(
         ('Ngày đăng kí'), default='dd/mm/yyyy')
     registration_upto = models.DateField(('Hạn đăng kí'))
