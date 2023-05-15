@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load tags %}
+{% block title %}
+Thông báo
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Danh sách thông báo /</span></h4>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="nav-align-top mb-4">
+                <form method="GET" action="{% url 'searchNotification' %}">
+                    {% csrf_token %}
+                    <div class=" mb-4 d-flex align-items-end">
+                        <div class="col"></div>
+                        <div class="col">
+                            <label for="search">{{ search_form.search.label }}</label>
+                            {{ search_form.search | add_css:"form-control"}}
+                        </div>
+                        <div class="{% if not result %} col d-flex justify-content-center h-25 {% endif %}">
+                            <button type="submit" id="submit" class="btn btn-primary"
+                                style="margin-left: 30px;">Search</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="navs-pills-top-home" role="tabpanel">
+                        <div class="table-responsive text-nowrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tên</th>
+                                        <th>Ngày đăng kí</th>
+                                        <th>Hạn đăng kí</th>
+                                        <th>Thời gian đăng kí</th>
+                                        <th>Gói đăng kí</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0">
+                                    {% for member in results %}
+                                    <tr>
+                                        <td>{{ member.first_name }} {{ member.last_name }}</td>
+                                        <td>{{ member.registration_date }}</td>
+                                        <td>{{ member.registration_upto }}</td>
+                                        <td>{{ member.subscription_period }} Tháng</td>
+                                        <td>{{ member.subscription_type }} </td>
+                                        <td><span class="text-danger">
+                                                {{ member.status }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                    data-bs-toggle="dropdown">
+                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="/members/update/{{ member.member_id }}"><i
+                                                            class="bx bx-edit-alt me-1"></i> Chỉnh sửa</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

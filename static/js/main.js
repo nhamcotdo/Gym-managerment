@@ -115,4 +115,7 @@ let menu, animate;
 
   // Auto update menu collapsed/expanded based on the themeConfig
   window.Helpers.setCollapsed(true, false);
+
+  $(`[href="${window.location.pathname}"]`).closest('li.menu-item').addClass('active')
+  $(`[href="${window.location.pathname}"]`).closest('li.menu-item').parent().closest('li.menu-item').addClass('active open')
 })();

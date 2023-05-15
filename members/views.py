@@ -15,7 +15,7 @@ def export_all(user_obj):
     response = HttpResponse(content_type='text/csv')
     writer = csv.writer(response)
     writer.writerow(['First name', 'Last name', 'Mobile', 'Admission Date', 'Subscription Type'])
-    members = user_obj.values_list('first_name', 'last_name', 'mobile_number', 'admitted_on', 'subscription_type')
+    members = user_obj.values_list('first_name', 'last_name', 'mobile_number', 'subscription_type')
     for user in members:
         first_name = user[0]
         last_name = user[1]
